@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'partials/navbar.html' %}
+{% if request.user.is_authenticated %}
+
+<div class="container xl:mx-20 mx-auto">
+
+    <!-- <h1 class="text-3xl text-gray-100 font-semibold tracking-tight leading-tight">Welcome {{ request.user.email }}</h1> -->
+    <h1 class="p-4 mt-4 text-gray-100 text-3xl lg:mx-12 leading-tighter font-bold tracking-tighter">Category</h1>
+    <div class="grid grid-cols-2 gap-4 mt-6 lg:mx-12 w-full">
+    
+        {% for category in categories %}
+        <!-- <a href="{% url 'category' category.id %}" class="underline">
+            <button class="w-full bg-gray-900 text-white py-2 rounded-md">{{ category.name }}</button>
+        </a> -->
+        <a href="{% url 'category' category.id %}" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+            <button class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ category.name }}</button>
+        </a>
+        {% endfor %}
+        
+    </div>
+</div>
+{% endif %}
+{% endblock %}

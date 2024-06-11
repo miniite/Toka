@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Booking Successful</h2>
+<p>Your booking for {{ booking.event.name }} is successful.</p>
+<p>Queue Token: {{ booking.queue_token }}</p>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'partials/admin-navbar.html' %}
+
+<div class="flex items-center justify-center h-screen bg-gray-900">
+    <div class="container mx-auto">
+        <div class="lg:mx-12 text-center">
+            <h1 class="text-3xl font-semibold text-gray-100 mb-8">Event Booked</h1>
+        </div>
+        <div class="lg:mx-12">
+            {% for booking in bookings %}
+            <div class="bg-gray-800 px-6 py-4 mb-4 rounded-lg shadow-lg">
+                <p class="text-gray-100 font-semibold">Client: {{ booking.client.name }}</p>
+                <p class="text-gray-100">Event: {{ booking.event.name }}</p>
+                <p class="text-gray-100">Approved: {% if booking.approved %}<span class="text-green-500">Yes</span>{% else %}<span class="text-red-500">No</span>{% endif %}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'partials/admin-navbar.html' %}
+
+<div class="flex items-center justify-center h-screen bg-gray-900">
+    <div class="container mx-auto">
+        <div class="lg:mx-12 text-center">
+            <h1 class="text-3xl font-semibold text-gray-100 mb-8">Create Event</h1>
+        </div>
+        <div class="lg:mx-12">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <label for="name" class="text-gray-100 block font-semibold">Event Name</label>
+                    <input type="text" name="name" id="name" class="w-full bg-gray-800 border border-gray-500 text-gray-100 rounded-md py-2 px-3 focus:outline-none focus:border-emerald-500" required>
+                </div>
+                <div class="mb-4">
+                    <label for="date" class="text-gray-100 block font-semibold">Date</label>
+                    <input type="date" name="date" id="date" class="w-full bg-gray-800 border border-gray-500 text-gray-100 rounded-md py-2 px-3 focus:outline-none focus:border-emerald-500" required>
+                </div>
+                <div class="mb-4">
+                    <label for="time" class="text-gray-100 block font-semibold">Time</label>
+                    <input type="time" name="time" id="time" class="w-full bg-gray-800 border border-gray-500 text-gray-100 rounded-md py-2 px-3 focus:outline-none focus:border-emerald-500" required>
+                </div>
+                <div class="mb-4">
+                    <label for="location" class="text-gray-100 block font-semibold">Location</label>
+                    <input type="text" name="location" id="location" class="w-full bg-gray-800 border border-gray-500 text-gray-100 rounded-md py-2 px-3 focus:outline-none focus:border-emerald-500" required>
+                </div>
+                <div class="mb-4">
+                    <label for="description" class="text-gray-100 block font-semibold">Description</label>
+                    <textarea name="description" id="description" class="w-full bg-gray-800 border border-gray-500 text-gray-100 rounded-md py-2 px-3 focus:outline-none focus:border-emerald-500" required></textarea>
+                </div>
+                <button type="submit" class="inline-block px-4 py-2 text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg focus:ring-4 focus:outline-none focus:ring-emerald-300">
+                    Create Event
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

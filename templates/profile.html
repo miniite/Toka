@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'partials/navbar.html' %}
+<div class="bg-gray-100 dark:bg-gray-900">
+    <div class="max-w-3xl mx-auto p-8">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
+            <h1 class="text-3xl font-semibold text-gray-900 dark:text-white mb-4">Profile</h1>
+            <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-gray-300 dark:bg-gray-700 rounded-full flex-shrink-0"></div>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white">{{ request.user.client.email }}</h2>
+                    <p class="text-gray-600 dark:text-gray-400">{{ request.user.client.name }}  welcome to your profile</p>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Bookings</h2>
+            {% for book in booking %}
+            <div class="border-t border-gray-200 dark:border-gray-600 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-emerald-500 text-white flex items-center justify-center rounded-md">{{ book.event.name|first|upper }}</div>
+                        <div>
+                            <p class="text-sm text-gray-700 dark:text-gray-400">{{ book.event.name }}</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-600">{{ book.event.owner.name }}</p>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400">{{ book.id }}</div>
+                    <div class="text-sm text-gray-500 dark:text-gray-400">{{ book.approved }}</div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
